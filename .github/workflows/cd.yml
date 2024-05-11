@@ -1,0 +1,36 @@
+name: remote ssh command
+on: [push]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: "172.210.36.187"
+        username: "adminbot"
+        password: "SL'Q6)udF$_PGBt"
+        port: 22
+        script: |
+          ls -al
+          cd /home/adminbot
+          sudo su
+          #validate if bot directory exists
+
+          if [ -d "botwpp" ]; then
+            cd /home/adminbot/botwpp git pull origin
+            pnpm install
+            pnpm run build
+            pm2 reload bot
+            pm2 logs
+          else
+            git clone git@github.com:jcgonzalezg/botwpp.git
+            cd /home/adminbot/botwpp
+            pnpm install
+            pnpm run build
+            pm2 start ./dist/app.js --name bot
+            pm2 logs
+          fi
+
