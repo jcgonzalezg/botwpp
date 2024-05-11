@@ -20,14 +20,14 @@ jobs:
           #validate if bot directory exists
 
           if [ -d "botwpp" ]; then
-            cd /home/adminbot/botwpp git pull origin
+            cd botwpp git pull origin
             pnpm install
             pnpm run build
             pm2 reload bot
             pm2 logs
           else
             git clone git@github.com:jcgonzalezg/botwpp.git
-            cd /home/adminbot/botwpp
+            cd botwpp
             pnpm install
             pnpm run build
             pm2 start ./dist/app.js --name bot
