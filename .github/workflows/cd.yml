@@ -14,6 +14,12 @@ jobs:
         password: "SL'Q6)udF$_PGBt"
         port: 22
         script: |
+          if ! command -v sshpass &> /dev/null
+          then
+              echo "sshpass no está instalado. Instalándolo..."
+              sudo apt-get install -y sshpass
+          fi
+          SSH_PASSWORD="123456"
           ls -al
           cd /home/adminbot
           #validate if bot directory exists
@@ -25,7 +31,7 @@ jobs:
             pm2 reload bot
             pm2 logs
           else
-            git clone git@github.com:jcgonzalezg/botwpp.git
+            sshpass -p "$SSH_PASSWORD" git clone git@github.com:jcgonzalezg/botwpp.git
             cd botwpp
             pnpm install
             pnpm run build
