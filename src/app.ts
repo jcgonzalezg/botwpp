@@ -3,6 +3,7 @@ import { createBot, createProvider, createFlow, addKeyword, utils } from '@build
 import { JsonFileDB as Database } from '@builderbot/database-json'
 import { MetaProvider as Provider } from '@builderbot/provider-meta'
 
+
 const PORT = process.env.PORT ?? 3008
 
 const discordFlow = addKeyword<Provider, Database>('doc').addAnswer(
@@ -61,9 +62,9 @@ const fullSamplesFlow = addKeyword<Provider, Database>(['samples', utils.setEven
 const main = async () => {
     const adapterFlow = createFlow([welcomeFlow, registerFlow, fullSamplesFlow])
     const adapterProvider = createProvider(Provider, {
-        jwtToken: 'jwtToken',
-        numberId: 'numberId',
-        verifyToken: 'verifyToken',
+        jwtToken: 'EAAP5RFGdackBO8rbW7E1kz6M6ZB8hSSnKZAlMp0HJ5AUDrdJOW8eRArafTf4cx43WrILfZBXZA2aw8Hj79qjYQdOjW5QQNRpTfuj505ivH5qAhodqfYCZAuxrS7Qw4yYC4Hnp0FURjKLzJ3ODhLGG7JNOORMhCyWH5KfEaah3ZBS8wudcNDlathh8d5hHMqsgZBWKXFgGTSPank5ZBrZCZBowZD',
+        numberId: '166692123192442',
+        verifyToken: 'botwpp',
         version: 'v18.0'
     })
     
