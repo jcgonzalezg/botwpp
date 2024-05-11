@@ -16,7 +16,6 @@ jobs:
         script: |
           ls -al
           cd /home/adminbot
-          sudo su
           #validate if bot directory exists
 
           if [ -d "botwpp" ]; then
