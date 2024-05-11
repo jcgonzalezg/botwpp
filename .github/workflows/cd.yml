@@ -16,7 +16,7 @@ jobs:
         script: |
           ls -al
           cd /home/adminbot
-          #validate if bot directory existss
+          #validate if bot directory exists
 
           if [ -d "botwpp" ]; then
             cd botwpp git pull origin
